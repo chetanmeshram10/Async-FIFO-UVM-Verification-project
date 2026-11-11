@@ -1,0 +1,10 @@
+results/
+*.wlf
+*.vcd
+*.fsdb
+transcript
+work/
+csrc/
+simv*
+xcelium.d/
+__pycache__/
