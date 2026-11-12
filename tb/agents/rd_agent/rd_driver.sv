@@ -2,7 +2,8 @@ class rd_driver extends uvm_driver #(rd_item);
   `uvm_component_utils(rd_driver)
 
   virtual rd_if vif;
-  bit respect_empty = 1;   // 1: hold request until accepted; 0: fire once, drop if empty
+  bit  respect_empty = 1;  // 1: hold request until accepted; 0: fire once, drop if empty
+  time last_edge;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
@@ -15,11 +16,16 @@ class rd_driver extends uvm_driver #(rd_item);
     void'(uvm_config_db#(bit)::get(this, "", "respect_empty", respect_empty));
   endfunction
 
+  task tick();
+    @(vif.drv_cb);
+    last_edge = $time;
+  endtask
+
   task run_phase(uvm_phase phase);
     rd_item t;
     vif.drv_cb.rinc <= 1'b0;
     wait (vif.rrst_n === 1'b1);
-    @(vif.drv_cb);
+    tick();
     forever begin
       seq_item_port.get_next_item(t);
       drive(t);
@@ -29,15 +35,19 @@ class rd_driver extends uvm_driver #(rd_item);
 
   task drive(rd_item t);
     bit accepted;
+    if ($time != last_edge) tick();
+
     repeat (t.delay) begin
       vif.drv_cb.rinc <= 1'b0;
-      @(vif.drv_cb);
+      tick();
     end
+
     do begin
       vif.drv_cb.rinc <= 1'b1;
-      @(vif.drv_cb);
+      tick();
       accepted = !vif.drv_cb.rempty;
     end while (respect_empty && !accepted);
+
     vif.drv_cb.rinc <= 1'b0;
   endtask
 endclass
