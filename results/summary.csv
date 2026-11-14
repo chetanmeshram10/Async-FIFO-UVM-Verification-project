@@ -1,0 +1,4 @@
+file,test,verdict,writes,reads,match,uvm_errors,uvm_fatals,sva_fails,first_fail,caught_by,func_cov_total
+bug1_random_test_w40000_r4000.log,random_test,ESCAPED,200,200,200,0,0,0,,,
+bug2_random_test_w40000_r4000.log,random_test,DETECTED,,,,0,1,0,PH_TIMEOUT @2000000000ps,watchdog,
+bug4_clk_ratio_test_w40000_r4000.log,clk_ratio_test,DETECTED,,,,5,0,0,SB_UNDERFLOW @194000ps,scoreboard,

@@ -1,0 +1,41 @@
+UVM_INFO @ 0: reporter [RNTST] Running test random_test...
+UVM_INFO @ 0: reporter [MAXQUITSET] '+UVM_MAX_QUIT_COUNT=5,0' provided on the command line is being applied.
+UVM_INFO fifo_env.sv(40) @ 0: uvm_test_top.env [ENV] Env built: agents + scoreboard + coverage connected
+xmsim: *E,ASRTST (./fifo_assertions.sv,20): (time 55 NS) Assertion tb_top.dut.u_sva.a_wfull_low_after_reset has failed
+SVA_FAIL a_wfull_low_after_reset: wfull high right after reset
+UVM_FATAL /xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_phase.svh(1521) @ 2000000000: reporter [PH_TIMEOUT] Explicit timeout of 2000000000 hit, indicating a probable testbench issue
+UVM_INFO /xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_report_server.svh(851) @ 2000000000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+Quit count :     0 of     5
+** Report counts by severity
+UVM_INFO :    4
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    1
+** Report counts by id
+[ENV]     1
+[MAXQUITSET]     1
+[PH_TIMEOUT]     1
+[RNTST]     1
+[UVM/RELNOTES]     1
+
+SVA_COVER full_events=1 empty_events=0 wr_while_full=1 rd_while_empty=1
+Simulation complete via $finish(1) at time 2 MS + 0
+/xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:135     $finish;
+xcelium> exit
+xmsim: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+xmsim: *W,CGDEFN: Default name "worklib.uvm_pkg::.cg_fifo" will be generated for covergroup instance "cg_fifo" as the name of the covergroup instance is not specified explicitly: ./fifo_coverage.sv, 19.
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  tb_top(tb_top)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_00000000_25c8a179.ucm
+  data               :  ./cov_work/scope/test/icc_00000000_25c8a179.ucd
+TOOL:	xrun	25.03-s001: Exiting on Nov 14, 2026 at 00:24:14 EST  (total: 00:00:12)
+Exit code expected: 0, received: 1
+Done

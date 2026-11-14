@@ -1,0 +1,49 @@
+UVM_INFO @ 0: reporter [RNTST] Running test overflow_test...
+UVM_INFO @ 0: reporter [MAXQUITSET] '+UVM_MAX_QUIT_COUNT=5,0' provided on the command line is being applied.
+UVM_INFO fifo_env.sv(40) @ 0: uvm_test_top.env [ENV] Env built: agents + scoreboard + coverage connected
+UVM_INFO /xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_objection.svh(1271) @ 1836500: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO fifo_coverage.sv(74) @ 1836500: uvm_test_top.env.cov [COV] clock ratio bin = WR_FASTER
+UVM_INFO fifo_coverage.sv(80) @ 1836500: uvm_test_top.env.cov [COV] cp_level=100.0% cp_trans=75.0% x_level_op=100.0% cp_ratio=20.0% total=69.2%
+UVM_INFO rd_monitor.sv(36) @ 1836500: uvm_test_top.env.rd_agt.mon [RD_MON] Total accepted reads: 16
+UVM_INFO fifo_scoreboard.sv(71) @ 1836500: uvm_test_top.env.sb [SB] writes=16 reads=16 match=16 mismatch=0 underflow=0 overflow=0 leftover=0
+UVM_INFO fifo_scoreboard.sv(72) @ 1836500: uvm_test_top.env.sb [SB_RESULT] *** TEST PASSED ***
+UVM_INFO wr_monitor.sv(35) @ 1836500: uvm_test_top.env.wr_agt.mon [WR_MON] Total accepted writes: 16
+UVM_INFO /xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_report_server.svh(851) @ 1836500: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+Quit count :     0 of     5
+** Report counts by severity
+UVM_INFO :   11
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[COV]     2
+[ENV]     1
+[MAXQUITSET]     1
+[RD_MON]     1
+[RNTST]     1
+[SB]     1
+[SB_RESULT]     1
+[TEST_DONE]     1
+[UVM/RELNOTES]     1
+[WR_MON]     1
+
+SVA_COVER full_events=1 empty_events=1 wr_while_full=1 rd_while_empty=0
+Simulation complete via $finish(1) at time 1836500 PS + 58
+/xcelium25.03/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh:543     $finish;
+xcelium> exit
+xmsim: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+xmsim: *W,CGDEFN: Default name "worklib.uvm_pkg::.cg_fifo" will be generated for covergroup instance "cg_fifo" as the name of the covergroup instance is not specified explicitly: ./fifo_coverage.sv, 19.
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  tb_top(tb_top)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_00000000_25c8a179.ucm
+  data               :  ./cov_work/scope/test/icc_00000000_25c8a179.ucd
+TOOL:	xrun	25.03-s001: Exiting on Nov 14, 2026 at 00:19:22 EST  (total: 00:00:11)
+Done

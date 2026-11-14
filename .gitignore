@@ -1,4 +1,4 @@
-results/
+results/coverage/
 *.wlf
 *.vcd
 *.fsdb
@@ -8,3 +8,4 @@ csrc/
 simv*
 xcelium.d/
 __pycache__/
+cov_work/
