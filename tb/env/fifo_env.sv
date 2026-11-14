@@ -7,6 +7,7 @@ class fifo_env extends uvm_env;
   wr_agent        wr_agt;
   rd_agent        rd_agt;
   fifo_scoreboard sb;
+  fifo_coverage   cov;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
@@ -25,14 +26,17 @@ class fifo_env extends uvm_env;
     wr_agt = wr_agent::type_id::create("wr_agt", this);
     rd_agt = rd_agent::type_id::create("rd_agt", this);
     sb     = fifo_scoreboard::type_id::create("sb", this);
+    cov    = fifo_coverage::type_id::create("cov", this);
   endfunction
 
   function void connect_phase(uvm_phase phase);
     wr_agt.ap.connect(sb.wr_export);
     rd_agt.ap.connect(sb.rd_export);
+    wr_agt.ap.connect(cov.wr_export);
+    rd_agt.ap.connect(cov.rd_export);
   endfunction
 
   function void start_of_simulation_phase(uvm_phase phase);
-    `uvm_info("ENV", "Env built: agents + scoreboard connected", UVM_LOW)
+    `uvm_info("ENV", "Env built: agents + scoreboard + coverage connected", UVM_LOW)
   endfunction
 endclass
